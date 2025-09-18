@@ -14,14 +14,6 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        try (Connection connection = Util.getConnection()) {
-            if (connection != null) {
-                System.out.println("Подключение к базе установлено!");
-            } else {
-                System.out.println("Не удалось подключиться к базе.");
-                return;
-            }
-
             UserService userService = new UserServiceImpl();
 
             userService.createUsersTable();
@@ -40,10 +32,6 @@ public class Main {
 
             userService.dropUsersTable();
             System.out.println("Таблица удалена.");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
     }
 }
